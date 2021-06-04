@@ -47,7 +47,7 @@ rApp.on("connection", (socket: sio.Socket) => {
 
 
 
-
+store.load()
 
 serv.listen(PORT, ()=> {
     console.log(`NODE_ENV ${process.env.NODE_ENV}`)
