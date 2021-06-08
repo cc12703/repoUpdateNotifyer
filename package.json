@@ -1,5 +1,5 @@
 {
-  "name": "repoUpdateNotifyer",
+  "name": "repoupdatenotifyer",
   "version": "1.0.0",
   "description": "notify for repository update",
   "main": "index.js",
