@@ -16,7 +16,9 @@ const MSG_UPDATE_INFOS = 'updateInfos'
 
 const app = express()
 const serv = http.createServer(app)
-const rApp = new sio.Server(serv)
+const rApp = new sio.Server(serv, {
+            cors: {credentials: true}
+        })
 
 app.use(cors({credentials: true}))
 app.use(express.json())
@@ -31,13 +33,6 @@ app.post('/update/submit', (req, resp) => {
 
     rApp.sockets.emit(MSG_UPDATE_INFOS, store.getUpdates())
 })
-
-
-if(process.env.NODE_ENV === 'development') {
-    app.get('/demoGet', function(req, resp) {
-        resp.sendFile('demoGet.html', {root:path.join(__dirname, 'static')})
-    })
-}
 
 
 

@@ -1,0 +1,41 @@
+
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Socket接口测试</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/socket.io/4.0.1/socket.io.js"></script>
+</head>
+    <button id="beginTest">beginTest</button>
+    <div id="console"></div>
+<body>
+    
+</body>
+
+
+<script type="text/javascript">
+    function beginTest() {
+        var socket = io.connect('ws://127.0.0.1:3000', {forceNew: true})
+        socket.on('connect',function(){
+            output('连接成功!')
+        });
+        socket.on('updateInfos', function(data){
+            console.log(data)
+            output(' 获取数据的数量： ' + data.length)
+            output(JSON.stringify(data))
+        })
+    }
+
+    function output(msg) {
+        $("#console").append($("<div>" + msg + "</div>"))
+    }
+
+    $("#beginTest").click(function() {
+        beginTest()
+    })
+</script>
+
+
+</html>
