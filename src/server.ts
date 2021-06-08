@@ -8,8 +8,9 @@ import cors from 'cors'
 import * as sio from 'socket.io'
 
 import * as store from './store'
+import * as util from './util'
 
-const PORT = 3000
+const PORT = util.normalizePort(process.env.PORT || '3000')
 
 const MSG_UPDATE_INFOS = 'updateInfos'
 

@@ -6,7 +6,10 @@ import fse from 'fs-extra'
 
 const DATA_FILE = path.join(process.cwd(), 'data', 'data.json')
 
-fse.ensureFileSync(DATA_FILE)
+if(!fse.existsSync(DATA_FILE)) {
+    fse.ensureFileSync(DATA_FILE)
+    fse.writeJSONSync(DATA_FILE, [])
+}
 
 export class RepoUpdateInfo {
 
