@@ -21,7 +21,7 @@ jobs:
         uses: docker/metadata-action@v3
         with: 
           images: cc12703/repoupdatenotifyer
-          tags: type=ref,event=tag
+          tags: type=match,pattern=v(.*),group=1
 
       - name: Checkout
         uses: actions/checkout@v2
